@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="app.css">
+
+    <title>IOT</title>
+  </head>
+  <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="app.js" ></script>
+	<!--<script src="app.service.js"></script> -->
+	
+  <body ng-app="myApp" ng-controller="myCtrl">
+	<div class="container-fluid">
+	<div class="row">
+    <div class="col-12">
+		<p class="text-center display-3">Generic IOT Platform</p>
+    </div>
+	</div>
+	<div class="row">
+    <div class="col-4 border">
+		<p class="text-left">Adminstrator</p>
+	</div>
+	<div class="col-8 border dashboard">
+   
+    </div>
+	
+	</div>
+	<div class="row">
+    <div class="col-4 border">
+		<nav class="nav flex-column">
+		  <a class="nav-link hamburger" href="#">Dashboard</a>
+		  <a class="nav-link hamburger" href="#">Associated IOT's</a>
+		  <a class="nav-link hamburger" href="#" id="devicesForm">Devices</a>
+		  <a class="nav-link hamburger" href="#" id="admin">Admin</a>
+		</nav>
+	</div>
+	<div class="col-8 border dashboardView">
+		<div class="row">
+			<div class="col-3 border">
+				<a class="nav-link" href="#">Total Views</a>
+			</div>
+			<div class="col-3 border">
+				<a class="nav-link" href="#">Total Page Views</a>
+			</div>
+			<div class="col-3 border">
+				<a class="nav-link" href="#">Unique Vistors</a>
+			</div>
+			<div class="col-3 border">
+				<a class="nav-link" href="#">Bounce Rates</a>
+			</div>
+		</div>
+    </div>
+	<div class="col-8 border formDevices hide">
+		<form>
+		<p class="text-center display-4">Device Registration</p>
+		<div class="form-group">
+    <label for="accountID">Accounts</label>
+	
+	
+    <select class="form-control" ng-model= "deviceRegistration.ai" id="accountID">
+	
+      <option value="1">HoneyWell</option>
+      <option value="2">Amazon</option>
+      <option value="3">Boradcom</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="DeviceName">Device Name</label>
+    <input type="text" class="form-control" id="DeviceName" ng-model= "deviceRegistration.dn" placeholder="Device Name">
+  </div>
+  
+  <div class="form-group">
+    <label for="DeviceDescirption">Device Descirption</label>
+    <input type="text" class="form-control" id="DeviceDescirption" ng-model= "deviceRegistration.dd" placeholder="Device Descirption">
+  </div>
+  <button type="submit" class="btn btn-primary" ng-click= "saveDeviceForm()">Submit</button>
+</form>
+    </div>
+	<div class="col-8 border dashboardDevices hide">
+		<div class="container">
+		<p class="text-center display-4">Devices Dashboard</p>
+		  <div class="row">
+			<div class="col-sm">
+			  One of three columns
+			</div>
+			<div class="col-sm">
+			  One of three columns
+			</div>
+			<div class="col-sm">
+			  <button type="button" class="btn btn-success">Grant</button>
+			  <button type="button" class="btn btn-danger">Revoke</button>
+
+			</div>
+		  </div>
+		</div>
+    </div>
+	</div>
+	</div>
+   
+  </body>
+  <script type="text/javascript">
+	$(document).ready(function(){
+		console.log('ready');
+		$('.hamburger').click(function(){
+				console.log($(this).attr('id'));
+					var _id = $(this).attr('id');
+				if(_id=="devicesForm"){
+					$('.dashboardView').addClass('hide').removeClass('show');
+					$('.formDevices').addClass('show').removeClass('hide');
+				}else if(_id == "admin"){
+					$('.dashboardView,.formDevices').addClass('hide').removeClass('show');
+					$('.dashboardDevices').addClass('show').removeClass('hide');
+				}else{
+					$('.dashboardView').removeClass('hide').addClass('show');
+					$('.formDevices,.dashboardDevices').addClass('hide').removeClass('show');
+				}
+				
+		});
+	});
+  </script>
+</html>
